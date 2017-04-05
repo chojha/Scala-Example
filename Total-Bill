@@ -1,4 +1,4 @@
-Scala project with TDD for Bill and Service charges in restaurants
+#Scala project with TDD for Bill and Service charges in restaurants
 
 object StandardBill{ 
    def main(args : Array[String]){ 
