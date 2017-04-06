@@ -1,10 +1,9 @@
 //#Scala project with TDD for Bill and Service charges in restaurants
 
-object StandardBill{ 
+object ServiceChargeCalc { 
    def main(args : Array[String]){ 
-       var svrChg : Double = 0.00
+       var svrChg = 0.00
        var total_Bill : Double = 0.00
-       var foofItemType : String = " "
        val cola_Price : Double = 0.50 
        val coffee_Price : Double = 1.00 
        val cheese_Sandwitch_Price : Double = 2.00 
@@ -20,83 +19,61 @@ object StandardBill{
        calculateBill(coffee_Price + cheese_Sandwitch_Price )
        calculateBill(coffee_Price + steak_Sandwitch_Price)
        calculateBill(cheese_Sandwitch_Price + steak_Sandwitch_Price)
-   }
+   
 
-   def calculateBill(x : Double) : String = x match { 
-       case 0.50 => total_Bill = cola_Price
-       val listOfItems : List[String] = List("cola")
-       println("Total Bill = cola =" + total_Bill)
-       calculateSvcChg()
-       case 1.00 => total_Bill = coffee_Price
-       val listOfItems : List[String] = List("coffee")
-       println("Total Bill = coffee =" + total_Bill) 
-       calculateSvcChg()
-       case 2.00 => total_Bill = cheese_Sandwitch_Price
-       val listOfItems : List[String] = List("cheese_Sandwitch")
-       println("Total Bill = cheese Sandwitch =" + total_Bill) 
-       calculateSvcChg()
-       case 4.50 => total_Bill = steak_Sandwitch_Price
-       val listOfItems : List[String] = List("steak_Sandwitch")
-       foodItemType = "hot"
-       println("Total Bill = steak Sandwitch =" + total_Bill)
-       calculateSvcChg()
-       case 1.50 => total_Bill = cola_Price + coffee_Price
-       val listOfItems : List[String] = List("cola", "coffee")
-       println("Total Bill = cola + coffee =" + total_Bill) 
-       calculateSvcChg()
-       case 2.50 => total_Bill = cola_Price + cheese_Sandwitch_Price
-       val listOfItems : List[String] = List("cola", "cheese_Sandwitch")
-       println("Total Bill = cola + cheese Sandwitch =" + total_Bill) 
-       calculateSvcChg()
-       case 5.00 => total_Bill = cola_Price + steak_Sandwitch_Price
-       val listOfItems : List[String] = List("cola", "steak_Sandwitch")
-       foodItemType = "hot"
-       println("Total Bill = cola + steak Sandwitch =" + total_Bill) 
-       calculateSvcChg()
-       case 3.00 => total_Bill = coffee_Price + cheese_Sandwitch_Price
-       val listOfItems : List[String] = List("coffee", "cheese_Sandwitch")
-       println("Total Bill = coffee + cheese Sandwitch =" + total_Bill) 
-       calculateSvcChg()
-       case 5.50 => total_Bill = coffee_Price + steak_Sandwitch_Price
-       val listOfItems : List[String] = List("coffee", "steak_Sandwitch")
-       foodItemType = "hot"
-       println("Total Bill = coffee + steak Sandwitch =" + total_Bill)  
-       calculateSvcChg()
-       case 6.50 => total_Bill = cheese_Sandwitch_Price + steak_Sandwitch_Price
-       val listOfItems : List[String] = List("cheese_Sandwitch", "steak_Sandwitch")
-       foodItemType = "hot"
-       println("Total Bill = cheese Sandwitch + steak Sandwitch =" + total_Bill)
-       calculateSvcChg()
-   }
-  
-   def calculateSvcChg() : Unit = {
-       if (listOfItems.contains("cola","coffee")){
-          svrChg = 0.00
-          println("Service Charge =" + svrChg) 
-       }
-       
-       if (listOfItems.contains("cheese_Sandwitch")){
-          svrChg = total_Bill * 0.10
-          println("Service Charge =" + svrChg) 
-       }
-       
-       if (listOfItems.contains("steak_Sandwitch") && foodItemType = "hot"){
-          svrChg = total_Bill * 0.20
-          if (svrChg > 20.00){
-             svrChg = 20.00 
-             println("Service Charge =" + svrChg) 
-          }
-          else
-             println("Service Charge =" + svrChg) 
-       }   
-       if (listOfItems.contains("cheese_Sandwitch", "steak_Sandwitch") && foodItemType = "hot"){
-          svrChg = total_Bill * 0.20
-          if (svrChg > 20.00){
-             svrChg = 20.00 
-             println("Service Charge =" + svrChg) 
-          }
-          else
+       def calculateBill(x : Double) = x match { 
+          case 0.50 => total_Bill = cola_Price
+             println("Total Bill = cola =" + total_Bill)
+             println("Service Charge =" + 0.00)
+          case 1.00 => total_Bill = coffee_Price
+             println("Total Bill = coffee =" + total_Bill) 
+             println("Service Charge =" + 0.00)
+          case 2.00 => total_Bill = cheese_Sandwitch_Price
+             println("Total Bill = cheese Sandwitch =" + total_Bill) 
+             svrChg = total_Bill * 0.10
              println("Service Charge =" + svrChg)
+          case 4.50 => total_Bill = steak_Sandwitch_Price
+             println("Total Bill = steak Sandwitch =" + total_Bill)
+             svrChg = total_Bill * 0.20
+             if (svrChg > 20)
+               println("Service Charge =" + 20.00)
+             else
+               println("Service Charge =" + svrChg)
+          case 1.50 => total_Bill = cola_Price + coffee_Price
+             println("Total Bill = cola + coffee =" + total_Bill) 
+             println("Service Charge =" + 0.00)
+          case 2.50 => total_Bill = cola_Price + cheese_Sandwitch_Price
+             println("Total Bill = cola + cheese Sandwitch =" + total_Bill) 
+             svrChg = total_Bill * 0.10
+             println("Service Charge =" + svrChg)
+          case 5.00 => total_Bill = cola_Price + steak_Sandwitch_Price
+             println("Total Bill = cola + steak Sandwitch =" + total_Bill) 
+             svrChg = total_Bill * 0.20
+             if (svrChg > 20)
+               println("Service Charge =" + 20.00)
+             else
+               println("Service Charge =" + svrChg)
+          case 3.00 => total_Bill = coffee_Price + cheese_Sandwitch_Price
+             println("Total Bill = coffee + cheese Sandwitch =" + total_Bill) 
+             svrChg = total_Bill * 0.10
+             println("Service Charge =" + svrChg)
+          case 5.50 => total_Bill = coffee_Price + steak_Sandwitch_Price
+             println("Total Bill = coffee + steak Sandwitch =" + total_Bill)  
+             svrChg = total_Bill * 0.20
+             if (svrChg > 20)
+               println("Service Charge =" + 20.00)
+             else
+               println("Service Charge =" + svrChg)
+          case 6.50 => total_Bill = cheese_Sandwitch_Price + steak_Sandwitch_Price
+             println("Total Bill = cheese Sandwitch + steak Sandwitch =" + total_Bill)
+             svrChg = total_Bill * 0.20
+             if (svrChg > 20)
+               println("Service Charge =" + 20.00)
+             else
+               println("Service Charge =" + svrChg)
        }
-   }       
-}
+   }
+}  
+
+
+
