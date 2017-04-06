@@ -99,4 +99,4 @@ object StandardBill{
              println("Service Charge =" + svrChg)
        }
    }       
-          
+}
